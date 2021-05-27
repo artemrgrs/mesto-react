@@ -3,9 +3,9 @@ import api from "../utils/Api.js";
 import Card from './Card';
 
 function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
-    const [userName, setuserName] = React.useState();
-    const [userDescription, setuserDescription] = React.useState();
-    const [userAvatar, setuserAvatar] = React.useState();
+    const [userName, setuserName] = React.useState('');
+    const [userDescription, setuserDescription] = React.useState('');
+    const [userAvatar, setuserAvatar] = React.useState('');
     const [cards, setcards] = React.useState([]);
 
     React.useEffect(() => {
@@ -38,7 +38,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
 
         <section className="elements">
             {cards.map(card => (
-                <Card card={card} onCardClick={onCardClick}/>
+                <Card card={card} key={card.id} onCardClick={onCardClick}/>
             ))
             }
         </section>

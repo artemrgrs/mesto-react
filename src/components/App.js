@@ -7,21 +7,22 @@ import ImagePopup from './ImagePopup';
 
 function App() {
     const [isEditAvatarPopupOpen, setEditAvatarPopup] = React.useState(false);
+    const [isEditProfilePopupOpen, setEditProfilePopup] = React.useState(false);
+    const [isAddPlacePopupOpen, setEditPlacePopup] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState(null);
+
     function handleEditAvatarClick() {
         setEditAvatarPopup(true);
     }
     
-    const [isEditProfilePopupOpen, setEditProfilePopup] = React.useState(false);
     function handleEditProfileClick() {
         setEditProfilePopup(true);
     } 
 
-    const [isAddPlacePopupOpen, setEditPlacePopup] = React.useState(false);
     function handleAddPlaceClick() {
         setEditPlacePopup(true);
     } 
 
-    const [selectedCard, setSelectedCard] = React.useState();
     function handleCardClick(props) {
         setSelectedCard(props);
     } 
@@ -30,7 +31,7 @@ function App() {
         setEditAvatarPopup(false);
         setEditProfilePopup(false);
         setEditPlacePopup(false);
-        setSelectedCard();
+        setSelectedCard(null);
     }
     
   return (

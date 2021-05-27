@@ -6,9 +6,9 @@ function Card(props) {
       }  
 
     return (
-        <div className="element" onClick={handleCardClick}>
+        <div className="element">
               <button type="button" className="element__delete-button"></button>
-                  <img className="element__image" src={props.card.link} alt={`${props.card.name}`}/>
+                  <img className="element__image" src={props.card.link} alt={`${props.card.name}`} onClick={handleCardClick}/>
               <div className="element__info">
                   <h2 className="element__heading">{`${props.card.name}`}</h2>
                   <div className="element__like-container">
