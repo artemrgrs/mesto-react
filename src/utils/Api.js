@@ -41,20 +41,20 @@
         .then(this._handleResponse);
     }
 
-    setLike(data) {
-        return fetch(`${this._url}/cards/likes/${data._id}`, {
-            method: 'PUT',
-            headers: this._headers
-        })
-        .then(this._handleResponse);
-    }
-    
-    removeLike(data) {
-        return fetch(`${this._url}/cards/likes/${data._id}`, {
-            method: 'DELETE',
-            headers: this._headers
-        })
-        .then(this._handleResponse);
+    changeLikeCardStatus(id, isLiked) {
+        if(!isLiked) {
+            return fetch(`${this._url}/cards/likes/${id}`, {
+                method: 'DELETE',
+                headers: this._headers
+            })
+            .then(this._handleResponse);
+        } else {
+            return fetch(`${this._url}/cards/likes/${id}`, {
+                method: 'PUT',
+                headers: this._headers
+            })
+            .then(this._handleResponse);
+        }
     }
 
     addCard(data) {
@@ -69,8 +69,8 @@
         .then(this._handleResponse);
     }
 
-    deleteCard(id) {
-        return fetch(`${this._url}/cards/${id}`, {
+    deleteCard(card) {
+        return fetch(`${this._url}/cards/${card._id}`, {
             method: 'DELETE',
             headers: this._headers
         })
@@ -82,7 +82,7 @@
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: user.link
+                avatar: user.avatar
             })
         })
         .then(this._handleResponse);
