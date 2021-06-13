@@ -7,7 +7,7 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import api from "../utils/Api.js";
+import api from "../utils/api.js";
 
 function App() {
     const [isEditAvatarPopupOpen, setEditAvatarPopup] = React.useState(false);
