@@ -70,6 +70,7 @@ function App() {
             setCurrentUser(res);
             closeAllPopups();
         })
+        .catch((err) => console.log(err));
     }
 
     function handleCardLike(card) {
@@ -78,14 +79,16 @@ function App() {
         api.changeLikeCardStatus(card._id, !isLiked)
             .then((newCard) => {
                 setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-        });
+        })
+        .catch((err) => console.log(err));
     }
 
     function handleCardDelete(card) {
         api.deleteCard(card)
         .then(() => {
             setCards((state) => state.filter((c) => c._id !== card._id))
-        });
+        })
+        .catch((err) => console.log(err));
     }
 
     function handleAddCard(card) {
@@ -94,6 +97,7 @@ function App() {
             setCards([res, ...cards])
             closeAllPopups();
         })
+        .catch((err) => console.log(err));
     }
 
   return (
@@ -122,4 +126,3 @@ function App() {
 }
 
 export default App;
-

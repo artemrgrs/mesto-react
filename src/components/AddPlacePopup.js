@@ -14,6 +14,11 @@ function AddPlacePopup(props) {
         setPlaceLinkValue(e.target.value);
     }
 
+    React.useEffect(() => {
+        setPlaceValue('')
+        setPlaceLinkValue('')
+      },[props.isOpen]);
+
     function handleSubmit(e) {
         e.preventDefault();
         props.onAddCard({
@@ -28,10 +33,10 @@ function AddPlacePopup(props) {
         <PopupWithForm title="Новое место" name="card-popup" button="Создать" isOpen={props.isOpen} onClose={props.onClose} onSubmit={handleSubmit}>
             <fieldset className="form__user-info">
                 <input id="title" type="text" className="form__field form__field_data_title"
-                    name="name" value={placeValue} placeholder="Название" required minLength="2" maxLength="40" onChange={handlePlaceChange}/>
+                    name="name" value={placeValue || ''} placeholder="Название" required minLength="2" maxLength="40" onChange={handlePlaceChange}/>
                 <span id="title-error" className="form__error">Вы пропустили это поле.</span>
                 <input id="link" type="url" className="form__field form__field_data_link"
-                    name="link" value={placeLinkValue} placeholder="Ссылка на картинку"  required onChange={handlePlaceLinkChange}/>
+                    name="link" value={placeLinkValue || ''} placeholder="Ссылка на картинку"  required onChange={handlePlaceLinkChange}/>
                 <span id="link-error" className="form__error">Вы пропустили это поле.</span>
             </fieldset>
         </PopupWithForm>
@@ -40,4 +45,3 @@ function AddPlacePopup(props) {
 }
 
 export default AddPlacePopup;
-
